@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+// Bootstrap application
+const app = require('../server')
+const port = process.env.PORT || 3000
+
+// Define server
+app.set('port', port)
+
+// Start server
+app.listen(port, () => {
+  console.log(`Elephant Front-end Coding Challenge is running at http://localhost:${port}`)
+})

@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "description": "Exercise for candidates to complete where they will build a responsive navigation driven from json",
+  "engines": {
+    "node": ">= 9.2",
+    "npm": ">= 5.0",
+    "yarn": ">=1.0"
+  },
+  "license": "© 2017 Elephant. All Rights Reserved.",
+  "main": "./server.js",
+  "name": "@elephant/fe-coding-challenge",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "start-dev": "npm run start & npm run watch-css",
+    "build-css": "./bin/build-css",
+    "watch-css": "./bin/watch-css"
+  },
+  "version": "1.0.0",
+  "devDependencies": {
+    "node-sass": "^4.9.3",
+    "nodemon": "^1.18.4"
+  }
+}

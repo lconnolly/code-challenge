@@ -1,0 +1,16 @@
+/*
+** Application Manifest
+*/
+/* Base */
+/*
+** Global Reset
+*/
+* {
+  box-sizing: border-box; }
+
+body {
+  font-family: sans-serif; }
+
+/*
+** Fonts
+*/
