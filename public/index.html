@@ -10,20 +10,23 @@
     <meta name="description" content="Written for the Elephant in the room"/>
 
     <!-- styles -->
-    <link href="style/application.css?v=1.0.0" rel="stylesheet" type="text/css"/>
+    <link href="/style/application.css?v=1.0.0" rel="stylesheet" type="text/css"/>
+
+    <!-- scripts -->
+    <script src="/script/nav.js"></script>
   </head>
-  <body data-mobile-nav="open">
+  <body data-nav-mobile-status="closed">
     <header role="banner" class="header">
       <div class="header__brand">
-        <a href="#" class="brand">
+        <a href="/" class="brand">
           <img src="/images/logo.svg" alt="Elephant"/>
         </a>
       </div>
       <div class="header__mobile-nav-toggle">
-        <a href="javascript:void(0)"><img src="/images/toggle-open.svg" data-mobile-nav-toggle></a>
+        <a href="javascript:void(0)" data-nav-mobile-toggle></a>
       </div>
       <div class="header__nav">
-        <nav class="nav--desktop" role="navigation">
+        <nav class="nav--desktop" role="navigation" data-nav-desktop>
           <ul>
             <li><a href="#">Work</a></li>
             <li>
@@ -50,8 +53,8 @@
         </nav>
       </div>
     </header>
-    <div class="nav--mobile">
-      <nav class="nav--mobile__menu">
+    <div class="nav--mobile" data-nav-mobile-panel>
+      <nav class="nav--mobile__menu" data-nav-mobile>
         <ul>
           <li><a href="#">Work</a></li>
           <li>
@@ -85,7 +88,7 @@
         <h1>Get paid for giving a shit.</h1>
       </div>
       <div class="col--primary">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, <a href="http://www.google.com">consectetur</a> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
     </main>
   </body>

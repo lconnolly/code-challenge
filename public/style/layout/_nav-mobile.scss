@@ -13,12 +13,12 @@ $block: 'nav--mobile';
     bottom: 0;
     width: calc(100% - 72px);
     overflow-x: hidden;
+    padding: 12px 0 48px 0;
     background-color: $color--white;
 
     // Expanded mobile nav state
-    [data-mobile-nav="open"] & {
+    [data-nav-mobile-status="open"] & {
         left: 0;
-        padding: 12px 0 48px 0;
     }
     
     @include breakpoint(sm) {

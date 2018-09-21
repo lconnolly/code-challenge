@@ -4,22 +4,45 @@
 
 body {
     overflow-x: hidden;
+
+    // Nav open
+    &[data-nav-mobile-status="open"] {
+        overflow-y: hidden;
+
+        @include breakpoint(sm) {
+            overflow-y: auto;
+        }
+    }
 }
 
+
+// Main contents wrapper for off-screen nav
 [data-nav-mobile-main] {
     transition: $timing--mobile-nav left ease-in-out;
-    position: relative;
     left: 0;
-}
 
-[data-mobile-nav="open"] {
-    overflow-y: hidden;
+    &:after {
+        content: '';
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        background-color: rgba(0, 0, 0, 0);
 
-    @include breakpoint(sm) {
-        overflow-y: auto;
+        [data-nav-mobile-status="open"] & {
+            display: block;
+            background-color: rgba(0, 0, 0, 0.5);
+
+            @include breakpoint(sm) {
+                display: none;
+            }
+        }
     }
 
-    [data-nav-mobile-main] {
+    [data-nav-mobile-status="open"] & {
         left: calc(100% - 72px);
 
         @include breakpoint(sm) {
@@ -27,6 +50,7 @@ body {
         }
     }
 }
+
 
 .col--primary {
     max-width: 1016px; // 968 + 24 * 2

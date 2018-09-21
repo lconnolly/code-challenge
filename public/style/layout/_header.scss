@@ -36,6 +36,10 @@ $block: 'header';
                 max-height: 24px;
             }
         }
+
+        [data-nav-mobile-status="open"] & {
+            left: 0;
+        }
     }
 
     .#{$block}__mobile-nav-toggle {
@@ -50,8 +54,21 @@ $block: 'header';
         }
 
         a {
+            position: relative;
             display: block;
-            padding: 20px 24px;
+            width: 24px;
+            height: 20px;
+            padding: 30px 32px;
+            background: transparent url('/images/toggle-open.svg') no-repeat center center;
+            background-size: 24px;
+
+            [data-nav-mobile-status="open"] & {
+                background-image: url('/images/toggle-close.svg');
+            }
+        }
+
+        [data-nav-mobile-status="open"] & {
+            left: 0;
         }
     }
 
@@ -60,16 +77,6 @@ $block: 'header';
 
         @include breakpoint(sm) {
             display: block;
-        }
-    }
-    
-    [data-mobile-nav="open"] & {
-        .#{$block}__brand {
-            left: 0;
-        }
-
-        .#{$block}__mobile-nav-toggle {
-            left: 0;
         }
     }
 }
