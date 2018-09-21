@@ -283,6 +283,26 @@ body {
       line-height: 1.2308; }
       .nav--mobile ul ul a {
         padding: 7px 24px 1px 24px; }
+    .nav--mobile ul .nav-item-parent a:after {
+      transition: 300ms all ease-in-out;
+      content: '^';
+      display: block;
+      position: absolute;
+      right: 24px;
+      top: 2px;
+      transform: rotate(-180deg); }
+    .nav--mobile ul .nav-item-parent ul {
+      max-height: 0;
+      overflow-y: hidden;
+      transition: 300ms max-height ease-in-out; }
+      .nav--mobile ul .nav-item-parent ul a:after {
+        content: '';
+        display: none; }
+    .nav--mobile ul .nav-item-parent.is-active a:after {
+      transform: rotate(0);
+      top: 16px; }
+    .nav--mobile ul .nav-item-parent.is-active ul {
+      max-height: 500px; }
   .nav--mobile .nav--mobile__copyright {
     position: absolute;
     left: 0;

@@ -57,6 +57,42 @@ $block: 'nav--mobile';
                 padding: 7px 24px 1px 24px;
             }
         }
+
+        .nav-item-parent {
+            a {
+                &:after {
+                    transition: $timing--mobile-nav all ease-in-out;
+                    content: '^';
+                    display: block;
+                    position: absolute;
+                    right: 24px;
+                    top: 2px;
+                    transform: rotate(-180deg);
+                }
+            }
+
+            ul {
+                max-height: 0;
+                overflow-y: hidden;
+                transition: $timing--mobile-nav max-height ease-in-out;
+
+                a:after {
+                    content: '';
+                    display: none;
+                }
+            }
+
+            &.is-active {
+                a:after {
+                    transform: rotate(0);
+                    top: 16px;
+                }
+
+                ul {
+                    max-height: 500px;
+                }
+            }
+        }
     }
 
 
