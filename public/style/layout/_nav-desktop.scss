@@ -1,0 +1,67 @@
+/*
+** Desktop Navigation
+*/
+
+$block: 'nav--desktop';
+
+.#{$block} {
+    ul {
+        display: flex;
+        font-weight: $weight--sans--light;
+        font-size: 18px;
+        line-height: 1.3333; // 24
+        letter-spacing: 1px;
+
+        li {
+            flex: 0 1 auto;
+            position: relative;
+
+            &:hover a {
+                color: $color--text;
+                background-color: $color--white;
+            }
+        }
+
+        a {
+            transition: all 300ms ease-in-out;
+            display: block;
+            padding: 24px 24px 20px 24px;
+            text-decoration: none;
+            color: $color--white;
+
+            &:hover,
+            &:focus {
+                color: $color--text;
+                background-color: $color--white;
+            }
+        }
+
+        ul {
+            z-index: 10;
+            display: none;
+            position: absolute;
+            top: 100%;
+            width: 200px;
+            padding: 12px 0;
+            font-size: 13px;
+            line-height: 1.3846; // 18
+            letter-spacing: 0;
+            background-color: $color--bg--lightest;
+
+            a {
+                padding: 13px 24px 7px 24px;
+                color: $color--text;
+
+                &:hover,
+                &:focus {
+                    background-color: $color--bg--light;
+                }
+            }
+        }
+
+        li:hover ul {
+            display: block;
+        }
+    }
+
+}

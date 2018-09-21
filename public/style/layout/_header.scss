@@ -10,6 +10,10 @@ $block: 'header';
     z-index: 100;
     background-color: $color--bg--dark;
 
+    @include breakpoint(sm) {
+        justify-content: flex-start;
+    }
+
     .#{$block}__brand {
         transition: $timing--mobile-nav left ease-in-out;
         display: block;
@@ -20,6 +24,8 @@ $block: 'header';
 
         @include breakpoint(sm) {
             left: auto;
+            flex: 0 1 auto;
+            margin-right: 24px;
         }
 
         img {
@@ -51,6 +57,10 @@ $block: 'header';
 
     .#{$block}__nav {
         display: none;
+
+        @include breakpoint(sm) {
+            display: block;
+        }
     }
     
     [data-mobile-nav="open"] & {

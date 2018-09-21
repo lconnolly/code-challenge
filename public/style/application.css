@@ -147,6 +147,9 @@ p {
   justify-content: space-between;
   z-index: 100;
   background-color: #000; }
+  @media (min-width: 768px) {
+    .header {
+      justify-content: flex-start; } }
   .header .header__brand {
     transition: 300ms left ease-in-out;
     display: block;
@@ -156,7 +159,9 @@ p {
     left: calc(-100% + 72px); }
     @media (min-width: 768px) {
       .header .header__brand {
-        left: auto; } }
+        left: auto;
+        flex: 0 1 auto;
+        margin-right: 24px; } }
     .header .header__brand img {
       display: block;
       max-height: 20px; }
@@ -177,6 +182,9 @@ p {
       padding: 20px 24px; }
   .header .header__nav {
     display: none; }
+    @media (min-width: 768px) {
+      .header .header__nav {
+        display: block; } }
   [data-mobile-nav="open"] .header .header__brand {
     left: 0; }
   [data-mobile-nav="open"] .header .header__mobile-nav-toggle {
@@ -244,12 +252,12 @@ body {
       vertical-align: bottom; }
       .nav--mobile ul a:hover, .nav--mobile ul a:focus {
         background-color: #eee; }
-  .nav--mobile ul ul {
-    font-weight: 300;
-    font-size: 13px;
-    line-height: 1.2308; }
-    .nav--mobile ul ul a {
-      padding: 7px 24px 1px 24px; }
+    .nav--mobile ul ul {
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 1.2308; }
+      .nav--mobile ul ul a {
+        padding: 7px 24px 1px 24px; }
   .nav--mobile .nav--mobile__copyright {
     position: absolute;
     left: 0;
@@ -260,6 +268,49 @@ body {
     font-size: 12px;
     line-height: 1.3333;
     background-color: #fff; }
+
+/*
+** Desktop Navigation
+*/
+.nav--desktop ul {
+  display: flex;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.3333;
+  letter-spacing: 1px; }
+  .nav--desktop ul li {
+    flex: 0 1 auto;
+    position: relative; }
+    .nav--desktop ul li:hover a {
+      color: #000;
+      background-color: #fff; }
+  .nav--desktop ul a {
+    transition: all 300ms ease-in-out;
+    display: block;
+    padding: 24px 24px 20px 24px;
+    text-decoration: none;
+    color: #fff; }
+    .nav--desktop ul a:hover, .nav--desktop ul a:focus {
+      color: #000;
+      background-color: #fff; }
+  .nav--desktop ul ul {
+    z-index: 10;
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 200px;
+    padding: 12px 0;
+    font-size: 13px;
+    line-height: 1.3846;
+    letter-spacing: 0;
+    background-color: #fff; }
+    .nav--desktop ul ul a {
+      padding: 13px 24px 7px 24px;
+      color: #000; }
+      .nav--desktop ul ul a:hover, .nav--desktop ul ul a:focus {
+        background-color: #eee; }
+  .nav--desktop ul li:hover ul {
+    display: block; }
 
 /*
 ** Hero Component

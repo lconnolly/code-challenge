@@ -47,17 +47,18 @@ $block: 'nav--mobile';
                 background-color: $color--bg--light;
             }
         }
-    }
 
-    ul ul {
-        font-weight: $weight--sans--light;
-        font-size: 13px;
-        line-height: 1.2308; // 16
+        ul {
+            font-weight: $weight--sans--light;
+            font-size: 13px;
+            line-height: 1.2308; // 16
 
-        a {
-            padding: 7px 24px 1px 24px;
+            a {
+                padding: 7px 24px 1px 24px;
+            }
         }
     }
+
 
     .#{$block}__copyright {
         position: absolute;
