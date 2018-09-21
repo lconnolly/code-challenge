@@ -1,8 +1,5 @@
 "use strict";
 
-// console.log("bodyDOM is " + this.navToggleDOM[0]);
-// console.log("bodyDOM is " + this.bodyDOM);
-
 function menuMobile(nav) {
     this.navElement = nav;
 
@@ -51,13 +48,11 @@ function menuMobile(nav) {
     }
 }
 
-
+// On page load, find mobile nav and initialize
 document.addEventListener("DOMContentLoaded", function() {
     let navMobile = document.querySelectorAll("[data-nav-mobile]")[0];
-    let navDesktop = document.querySelectorAll("[data-nav-desktop]")[0];
-
     if (navMobile != null) {
-        let sm = new menuMobile(navMobile);
-        sm.init();
+        let mm = new menuMobile(navMobile);
+        mm.init();
     }
 }); 
