@@ -1,0 +1,33 @@
+/*
+** Variables
+*/
+
+
+/*
+** Typography
+*/
+
+// Type: Families
+$family--sans:              'Founders Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
+
+// Type: Weights
+$weight--light:             300;
+$weight--regular:           400;
+$weight--medium:            500;
+
+
+/*
+** Color Palette
+*/
+
+// Palette: Grayscale
+$color--white:              #fff;
+$color--gray--light:        #eee;
+$color--gray--dark:         #333;
+$color--black:              #000;
+
+// Palette: Functional
+$color--bg--lightest:       $color--white;
+$color--bg--light:          $color--gray--light;
+$color--bg--dark:           $color--black;
+$color--bg--translucent:    fade($color--black, 50%);

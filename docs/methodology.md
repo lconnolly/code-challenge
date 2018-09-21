@@ -17,8 +17,9 @@
     - install SCSS / nodemon
     - configure watch script
     - document SCSS components installed / watch script
-    - create SCSS partials
     - add public compiled stylesheet to application template
+    - create SCSS partials
+    - add font imports (verify type updates)
 
 3. Add preliminary content (markup) & styles and responsive behavior
     - typographic details from readme

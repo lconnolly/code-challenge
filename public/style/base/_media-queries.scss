@@ -1,0 +1,28 @@
+/*
+** Media Queries
+*/
+
+
+// Breakpoints
+$breakpoint-sm:         768px;
+$breakpoint-lg:         1120px;
+
+
+// Breakpoint mixin
+@mixin breakpoint($class) {
+    @if $class == sm {
+        @media(min-width: $breakpoint-sm) {
+            @content;
+        }
+    }
+
+    @else if $class == lg {
+        @media(min-width: $breakpoint-lg) {
+            @content;
+        }
+    }
+
+    @else {
+        @warn "Supported mixin values: sm / lg";
+    }
+}

@@ -2,7 +2,18 @@
 ** Application Manifest
 */
 
-/* Base */
+// Base
 @import "base/reset";
 @import "base/fonts";
 @import "base/vars";
+@import "base/media-queries";
+
+// Fonts
+@import "fonts/founders-grotesk";
+
+// Elements 
+@import "elements/typography";
+
+// Layout
+@import "layout/header";
+@import "layout/main";

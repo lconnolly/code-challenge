@@ -37,6 +37,7 @@ At a high level the navigation will have two main states:
 .
 ├── bin                  # Node executables that are installed into the PATH environment variable.
 ├── data                 # Data to drive the Application.
+├── docs                 # Additional documentation.
 ├── node_modules         # Vendor Packages.
 ├── public               # Served Assets.
 ├── storage              # Extra Assets.
