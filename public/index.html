@@ -12,17 +12,51 @@
     <!-- styles -->
     <link href="style/application.css?v=1.0.0" rel="stylesheet" type="text/css"/>
   </head>
-  <body>
+  <body data-mobile-nav="closed">
     <header role="banner" class="header">
-      <div class="brand">
-        <a href="#">
+      <div class="header__brand">
+        <a href="#" class="brand">
           <img src="/images/logo.svg" alt="Elephant"/>
         </a>
       </div>
-      <nav role="navigation" class="nav">
+      <div class="header__mobile-nav-toggle">
+        <a href="javascript:void(0)"><img src="/images/toggle-open.svg" data-mobile-nav-toggle></a>
+      </div>
+      <nav class="header__nav" role="navigation">
+        <ul></ul>
       </nav>
     </header>
-    <main role="main" class="main">
+    <div class="nav--mobile">
+      <nav class="nav--mobile__menu">
+        <ul>
+          <li><a href="#">Work</a></li>
+          <li>
+            <a href="#">About</a>
+            <ul>
+              <li><a href="#">Link One</a></li>
+              <li><a href="#">Link Number Two</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Careers</a>
+            <ul>
+              <li><a href="#">Client Services</a></li>
+              <li><a href="#">Creative</a></li>
+              <li><a href="#">Motion &amp; Media</a></li>
+              <li><a href="#">Operations</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Ideas</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav--mobile__copyright">
+        &copy; 2018 Elephant. All Rights Reserved.
+      </div>
+    </div>
+    <main role="main" class="main" data-nav-mobile-main="primary">
       <div class="hero">
         <h1>Get paid for giving a shit.</h1>
       </div>

@@ -2,10 +2,35 @@
 ** Main Layout
 */
 
+body {
+    overflow-x: hidden;
+}
+
+[data-nav-mobile-main] {
+    transition: $timing--mobile-nav left ease-in-out;
+    position: relative;
+    left: 0;
+}
+
+[data-mobile-nav="open"] {
+    overflow-y: hidden;
+
+    @include breakpoint(sm) {
+        overflow-y: auto;
+    }
+
+    [data-nav-mobile-main] {
+        left: calc(100% - 72px);
+
+        @include breakpoint(sm) {
+            left: 0;
+        }
+    }
+}
+
 .col--primary {
     max-width: 1016px; // 968 + 24 * 2
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 72px auto;
     padding-left: 24px;
     padding-right: 24px;
 }

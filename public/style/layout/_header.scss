@@ -2,15 +2,67 @@
 ** Header Layout
 */
 
-.header {
-    padding: 20px 24px;
+$block: 'header';
+
+.#{$block} {
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
     background-color: $color--bg--dark;
 
-    .brand a {
+    .#{$block}__brand {
+        transition: $timing--mobile-nav left ease-in-out;
         display: block;
+        flex: 1 1 auto;
+        position: relative;
+        padding: 20px 24px;
+        left: calc(-100% + 72px);
+
+        @include breakpoint(sm) {
+            left: auto;
+        }
 
         img {
             display: block;
+            max-height: 20px;
+
+            @include breakpoint(sm) {
+                max-height: 24px;
+            }
+        }
+    }
+
+    .#{$block}__mobile-nav-toggle {
+        transition: $timing--mobile-nav left ease-in-out;
+        flex: 0 1 72px;
+        position: relative;
+        left: calc(-100% + 72px);
+
+        @include breakpoint(sm) {
+            left: auto;
+            display: none;
+        }
+
+        a {
+            display: block;
+            padding: 20px 24px;
+        }
+    }
+
+    .#{$block}__nav {
+        display: none;
+    }
+    
+    [data-mobile-nav="open"] & {
+        .#{$block}__brand {
+            left: 0;
+        }
+
+        .#{$block}__mobile-nav-toggle {
+            left: 0;
         }
     }
 }
+
+
+// Expanded mobile nav state

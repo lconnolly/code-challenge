@@ -8,7 +8,8 @@
 */
 
 // Type: Families
-$family--sans:              'Founders Grotesk', 'Helvetica Neue', 'Helvetica', sans-serif;
+$family--sans--fallback:    'Helvetica Neue', 'Helvetica', sans-serif;
+$family--sans:              'Founders Grotesk', $family--sans--fallback;
 
 // Type: Weights
 $weight--light:             300;
@@ -31,3 +32,11 @@ $color--bg--lightest:       $color--white;
 $color--bg--light:          $color--gray--light;
 $color--bg--dark:           $color--black;
 $color--bg--translucent:    fade($color--black, 50%);
+
+
+
+/*
+** Timing
+*/
+
+$timing--mobile-nav:        300ms;

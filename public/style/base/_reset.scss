@@ -58,9 +58,16 @@ input[type="submit"] {
     cursor: pointer;
 }
 
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
 nav ul {
     margin: 0;
     padding: 0;
+    list-style: none;
 
     li {
         margin: 0;

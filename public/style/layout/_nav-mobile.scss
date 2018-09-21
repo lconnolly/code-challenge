@@ -1,0 +1,39 @@
+/*
+** Mobile Navigation
+*/
+
+$block: 'nav--mobile';
+
+.#{$block} {
+    transition: $timing--mobile-nav left ease-in-out;
+    position: fixed;
+    z-index: 10;
+    left: -100%;
+    top: 60px;
+    bottom: 0;
+    width: calc(100% - 72px);
+    overflow-x: hidden;
+    background-color: $color--white;
+
+    // Expanded mobile nav state
+    [data-mobile-nav="open"] & {
+        left: 0;
+        padding: 12px 24px 48px 24px;
+    }
+    
+    @include breakpoint(sm) {
+        display: none;
+    }
+
+    .#{$block}__copyright {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 16px 24px;
+        font-family: $family--sans--fallback;
+        font-size: 12px;
+        line-height: 1.3333; // 16
+        background-color: $color--white;
+    }
+}
