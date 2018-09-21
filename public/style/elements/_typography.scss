@@ -8,3 +8,32 @@ body {
     font-size: 16px;
     line-height: 1;
 }
+
+h1,
+.h1 {
+    margin: 50px 0;
+    font-weight: $weight--medium;
+    font-size: 44px;
+    line-height: 1.0909; // 48
+
+    @include breakpoint(sm) {
+        margin: 0;
+        font-weight: $weight--regular;
+        font-size: 60px;
+        line-height: 1.2;
+        letter-spacing: 2px;
+    }
+}
+
+h2,
+.h2 {
+    font-weight: $weight--medium;
+    font-size: 48px;
+    line-height: 1.25; // 60
+}
+
+p {
+    font-weight: $weight--light;
+    font-size: 16px;
+    line-height: 1.5; // 24
+}

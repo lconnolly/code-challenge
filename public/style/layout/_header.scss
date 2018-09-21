@@ -1,3 +1,16 @@
 /*
 ** Header Layout
 */
+
+.header {
+    padding: 20px 24px;
+    background-color: $color--bg--dark;
+
+    .brand a {
+        display: block;
+
+        img {
+            display: block;
+        }
+    }
+}
