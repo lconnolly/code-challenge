@@ -1,5 +1,8 @@
 # Elephant Front-end Coding Challenge
 
+## Luke Connolly notes:
+- Pleave view breakdown / documentation within the `/docs` directory
+
 ## Overview
 
 This exercise will have the candidate build a responsive site navigation driven by an AJAX request.
