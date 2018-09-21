@@ -225,16 +225,37 @@ body {
   background-color: #fff; }
   [data-mobile-nav="open"] .nav--mobile {
     left: 0;
-    padding: 12px 24px 48px 24px; }
+    padding: 12px 0 48px 0; }
   @media (min-width: 768px) {
     .nav--mobile {
       display: none; } }
+  .nav--mobile ul {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.3333; }
+    .nav--mobile ul li {
+      display: block; }
+    .nav--mobile ul a {
+      position: relative;
+      display: block;
+      padding: 13px 24px 6px 24px;
+      text-decoration: none;
+      color: #000;
+      vertical-align: bottom; }
+      .nav--mobile ul a:hover, .nav--mobile ul a:focus {
+        background-color: #eee; }
+  .nav--mobile ul ul {
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 1.2308; }
+    .nav--mobile ul ul a {
+      padding: 7px 24px 1px 24px; }
   .nav--mobile .nav--mobile__copyright {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 16px 24px;
+    padding: 16px 16px 16px 24px;
     font-family: "Helvetica Neue", "Helvetica", sans-serif;
     font-size: 12px;
     line-height: 1.3333;

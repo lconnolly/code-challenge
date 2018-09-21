@@ -12,9 +12,9 @@ $family--sans--fallback:    'Helvetica Neue', 'Helvetica', sans-serif;
 $family--sans:              'Founders Grotesk', $family--sans--fallback;
 
 // Type: Weights
-$weight--light:             300;
-$weight--regular:           400;
-$weight--medium:            500;
+$weight--sans--light:             300;
+$weight--sans--regular:           400;
+$weight--sans--medium:            500;
 
 
 /*
@@ -28,6 +28,9 @@ $color--gray--dark:         #333;
 $color--black:              #000;
 
 // Palette: Functional
+$color--text:               $color--black;
+
+
 $color--bg--lightest:       $color--white;
 $color--bg--light:          $color--gray--light;
 $color--bg--dark:           $color--black;

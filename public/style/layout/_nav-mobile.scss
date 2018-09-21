@@ -18,11 +18,45 @@ $block: 'nav--mobile';
     // Expanded mobile nav state
     [data-mobile-nav="open"] & {
         left: 0;
-        padding: 12px 24px 48px 24px;
+        padding: 12px 0 48px 0;
     }
     
     @include breakpoint(sm) {
         display: none;
+    }
+
+    ul {
+        font-weight: $weight--sans--regular;
+        font-size: 18px;
+        line-height: 1.3333; // 24
+
+        li {
+            display: block;
+        }
+
+        a {
+            position: relative;
+            display: block;
+            padding: 13px 24px 6px 24px;
+            text-decoration: none;
+            color: $color--text;
+            vertical-align: bottom;
+
+            &:hover,
+            &:focus {
+                background-color: $color--bg--light;
+            }
+        }
+    }
+
+    ul ul {
+        font-weight: $weight--sans--light;
+        font-size: 13px;
+        line-height: 1.2308; // 16
+
+        a {
+            padding: 7px 24px 1px 24px;
+        }
     }
 
     .#{$block}__copyright {
@@ -30,7 +64,7 @@ $block: 'nav--mobile';
         left: 0;
         right: 0;
         bottom: 0;
-        padding: 16px 24px;
+        padding: 16px 16px 16px 24px;
         font-family: $family--sans--fallback;
         font-size: 12px;
         line-height: 1.3333; // 16
