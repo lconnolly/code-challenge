@@ -51,6 +51,25 @@ body {
     }
 }
 
+[data-nav-desktop-status] {
+    &:after {
+        content: '';
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        // z-index: -1;
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+[data-nav-desktop-status="open"]:after {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 
 .col--primary {
     max-width: 1016px; // 968 + 24 * 2

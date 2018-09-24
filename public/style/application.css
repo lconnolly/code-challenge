@@ -147,9 +147,10 @@ p {
 ** Header Layout
 */
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
-  z-index: 100;
+  z-index: 1000;
   background-color: #000; }
   @media (min-width: 768px) {
     .header {
@@ -236,6 +237,20 @@ body {
     @media (min-width: 768px) {
       [data-nav-mobile-status="open"] [data-nav-mobile-main] {
         left: 0; } }
+
+[data-nav-desktop-status]:after {
+  content: '';
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0); }
+
+[data-nav-desktop-status="open"]:after {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.8); }
 
 .col--primary {
   max-width: 1016px;
@@ -326,7 +341,8 @@ body {
   .nav--desktop ul li {
     flex: 0 1 auto;
     position: relative; }
-    .nav--desktop ul li:hover a {
+    .nav--desktop ul li:hover a,
+    .nav--desktop ul li.is-active a {
       color: #000;
       background-color: #fff; }
   .nav--desktop ul a {
@@ -354,6 +370,8 @@ body {
       color: #000; }
       .nav--desktop ul ul a:hover, .nav--desktop ul ul a:focus {
         background-color: #eee; }
+  .nav--desktop ul li.is-active ul {
+    display: block; }
 
 /*
 ** Hero Component
@@ -368,22 +386,22 @@ body {
       height: 640px;
       margin-bottom: 60px;
       text-align: center; } }
-  .hero:before {
+  .hero:after {
     content: '';
     display: block;
     height: 240px;
     background: transparent url("/images/hero-bg.jpg") no-repeat center center;
     background-size: cover; }
     @media (min-width: 768px) {
-      .hero:before {
+      .hero:after {
         height: auto;
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
-        bottom: 0; } }
+        bottom: 0;
+        z-index: -1; } }
   .hero h1 {
-    z-index: 1;
     padding: 0 24px; }
     @media (min-width: 768px) {
       .hero h1 {

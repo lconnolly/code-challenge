@@ -16,7 +16,8 @@ $block: 'nav--desktop';
             flex: 0 1 auto;
             position: relative;
 
-            &:hover a {
+            &:hover a,
+            &.is-active a {
                 color: $color--text;
                 background-color: $color--white;
             }
@@ -59,9 +60,9 @@ $block: 'nav--desktop';
             }
         }
 
-        // li:hover ul {
-        //     display: block;
-        // }
+        li.is-active ul {
+            display: block;
+        }
     }
 
 }

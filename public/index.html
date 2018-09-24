@@ -14,9 +14,8 @@
 
     <!-- scripts -->
     <script src="/script/navMobile.js"></script>
-    <script src="/script/navDesktop.js"></script>
   </head>
-  <body data-nav-mobile-status="closed">
+  <body data-nav-mobile-status="closed" data-nav-desktop-status="closed">
     <header role="banner" class="header">
       <div class="header__brand">
         <a href="/" class="brand">
@@ -27,31 +26,7 @@
         <a href="javascript:void(0)" data-nav-mobile-toggle></a>
       </div>
       <div class="header__nav">
-        <nav class="nav--desktop" role="navigation" data-nav-desktop>
-          <ul>
-            <li><a href="#">Work</a></li>
-            <li>
-              <a href="#">About</a>
-              <ul>
-                <li><a href="#">Link One</a></li>
-                <li><a href="#">Link Number Two</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#">Careers</a>
-              <ul>
-                <li><a href="#">Client Services</a></li>
-                <li><a href="#">Creative</a></li>
-                <li><a href="#">Motion &amp; Media</a></li>
-                <li><a href="#">Operations</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Ideas</a></li>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
+        <nav class="nav--desktop" role="navigation" data-nav-desktop></nav>
       </div>
     </header>
     <div class="nav--mobile" data-nav-mobile-panel>

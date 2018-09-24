@@ -14,7 +14,7 @@
         text-align: center;
     }
 
-    &:before {
+    &:after {
         content: '';
         display: block;
         height: 240px;
@@ -28,11 +28,12 @@
             right: 0;
             top: 0;
             bottom: 0;
+            z-index: -1;
         }
     }
 
     h1 {
-        z-index: 1;
+        // z-index: 1;
         padding: 0 24px;
 
         @include breakpoint(sm) {

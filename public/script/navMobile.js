@@ -1,6 +1,6 @@
 "use strict";
 
-function navBuilder(buildMobile) {
+function navBuilder(buildMobile, buildDesktop) {
     // Request navigation data from API
     this.requestNav = function(successFunc) {
         this.httpRequest = new XMLHttpRequest();
@@ -41,8 +41,12 @@ function navBuilder(buildMobile) {
             }
         });
         navMarkup += `</ul>`;
+
         let mobileNav = new menuMobile(navMarkup);
         mobileNav.init();
+
+        let desktopNav = new menuDesktop(navMarkup);
+        desktopNav.init();
     }
 
     this.init = function() {
@@ -56,7 +60,6 @@ function menuMobile(markup) {
     this.openClass = "open";
 
     // DOM elements
-    // this.mobilePanelDOM = document.querySelectorAll("[data-nav-mobile-panel]")[0];
     this.bodyDOM = document.querySelectorAll("[data-nav-mobile-status]")[0];
     this.navToggleDOM = document.querySelectorAll("[data-nav-mobile-toggle]")[0];
     this.navDOM = document.querySelectorAll("[data-nav-mobile]")[0];
@@ -114,7 +117,7 @@ function menuMobile(markup) {
         });
     }
 
-    // Initialize menu
+    // Initialize mobile menu
     this.init = function() {
         this.navDOM.innerHTML = markup;
         this.addPanelEvents();
@@ -122,15 +125,69 @@ function menuMobile(markup) {
     }
 }
 
+function menuDesktop(markup) {
+    let _this = this;
+
+    this.navIsOpen = false;
+    this.closedClass = "closed";
+    this.openClass = "open";
+
+    // DOM elements
+    this.bodyDOM = document.querySelectorAll("[data-nav-desktop-status]")[0];
+    this.navDOM = document.querySelectorAll("[data-nav-desktop]")[0];
+
+    // Panel Events
+    this.openMenu = function() {
+        this.bodyDOM.setAttribute("data-nav-desktop-status", this.openClass);
+        this.navIsOpen = true;
+    }
+
+    this.closeMenu = function() {
+        this.bodyDOM.setAttribute("data-nav-desktop-status", this.closedClass);
+        this.navIsOpen = false;
+    }
+
+    this.toggleMenu = function() {
+        this.navIsOpen ? this.closeMenu() : this.openMenu();
+    }
+
+    // Navigation events (dropdowns)
+    this.addNavEvents = function() {
+        this.navDOM.addEventListener("click", function(e) {
+            // #TODO: close other open items when clicking a new parent
+            if (e.target.hasAttribute("data-nav-item-parent")) {
+                e.preventDefault();
+                
+                if (e.target.parentNode.classList.contains("is-active")) {
+                    let activeItems = document.querySelectorAll(".is-active");
+                    Array.prototype.forEach.call(activeItems, function(item) {
+                        item.classList.remove("is-active");
+                    });
+                    _this.closeMenu();
+                } else {
+                    let activeItems = document.querySelectorAll(".is-active");
+                    Array.prototype.forEach.call(activeItems, function(item) {
+                        item.classList.remove("is-active");
+                    });
+                    e.target.parentNode.classList.add("is-active");
+                    _this.openMenu();
+                }
+                e.target.blur();
+            }
+        });
+    }
+
+    // Initialize desktop menu
+    this.init = function() {
+        this.navDOM.innerHTML = markup;
+        this.addNavEvents();
+    }
+}
+
 // On page load, find mobile nav and initialize
 document.addEventListener("DOMContentLoaded", function() {
     let mm = new menuMobile();
-    let nav = new navBuilder(mm.init);
+    let md = new menuDesktop();
+    let nav = new navBuilder(mm.init, md.init);
     nav.init();
-    // if (navMobile != null) {
-    //     let navData = new navBuilder();
-    //     console.log(navData.init);
-    //     navData.init();
-    //     // console.log(navData);
-    // }
 }); 
