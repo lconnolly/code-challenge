@@ -1,20 +1,8 @@
 "use strict";
 
-function menuMobile(nav) {
-    this.closedClass = "closed";
-    this.openClass = "open";
-    this.navIsOpen = false;
-
-    // DOM elements
-    this.bodyDOM = document.querySelectorAll("[data-nav-mobile-status]")[0];
-    this.navToggleDOM = document.querySelectorAll("[data-nav-mobile-toggle]")[0];
-    this.navDOM = document.querySelectorAll("[data-nav-mobile]")[0];
-    this.navMobileMainDOM = document.querySelectorAll("[data-nav-mobile-main]")[0];
-
+function navBuilder(buildMobile) {
     // Request navigation data from API
     this.requestNav = function(successFunc) {
-        var _this = this;
-
         this.httpRequest = new XMLHttpRequest();
         if (!this.httpRequest) {
             alert("Cannot create an XMLHTTP instance");
@@ -25,7 +13,7 @@ function menuMobile(nav) {
             if (this.readyState === XMLHttpRequest.DONE) {
                 if (this.status === 200) {
                     let navData = JSON.parse(this.responseText);
-                    successFunc(navData, _this.navDOM);
+                    successFunc(navData);
                 } else {
                     console.log("There was a problem fetching the navigation");
                 }
@@ -37,13 +25,10 @@ function menuMobile(nav) {
     }
 
     // Build navigation markup
-    this.buildNav = function(data, navElement) {
-        let _this = this;
+    this.buildMarkup = function(data) {
         let navItems = data["items"];
-
         let navMarkup = `<ul>`;
         navItems.forEach(function(element) {
-            // console.log(element["label"]);
             if(element["items"].length === 0) {
                 navMarkup += `<li><a href="${element["url"]}">${element["label"]}</a></li>`;
             } else {
@@ -52,19 +37,38 @@ function menuMobile(nav) {
                     childListMarkup += `<li><a href="${el["url"]}">${el["label"]}</a></li>`
                 });
                 childListMarkup += `</ul>`;
-                // console.log(childListMarkup);
                 navMarkup += `<li class="nav-item-parent"><a href="${element["url"]}" data-nav-item-parent>${element["label"]}</a>` + childListMarkup + `</li>`;
             }
         });
         navMarkup += `</ul>`;
-        navElement.innerHTML = navMarkup;
+        let mobileNav = new menuMobile(navMarkup);
+        mobileNav.init();
     }
+
+    this.init = function() {
+        this.requestNav(this.buildMarkup);
+    }
+}
+
+function menuMobile(markup) {
+    this.navIsOpen = false;
+    this.closedClass = "closed";
+    this.openClass = "open";
+
+    // DOM elements
+    // this.mobilePanelDOM = document.querySelectorAll("[data-nav-mobile-panel]")[0];
+    this.bodyDOM = document.querySelectorAll("[data-nav-mobile-status]")[0];
+    this.navToggleDOM = document.querySelectorAll("[data-nav-mobile-toggle]")[0];
+    this.navDOM = document.querySelectorAll("[data-nav-mobile]")[0];
+    this.navMobileMainDOM = document.querySelectorAll("[data-nav-mobile-main]")[0];
+
+    // console.log(this.navDOM);
 
     // Navigation events (accordion)
     this.addNavEvents = function() {
         this.navDOM.addEventListener("click", function(e) {
 
-            // Todo: close other open items when clicking a new parent
+            // #TODO: close other open items when clicking a new parent
             if (e.target.hasAttribute("data-nav-item-parent")) {
                 e.preventDefault();
                 if (e.target.parentNode.classList.contains("is-active")) {
@@ -112,7 +116,7 @@ function menuMobile(nav) {
 
     // Initialize menu
     this.init = function() {
-        this.requestNav(this.buildNav);
+        this.navDOM.innerHTML = markup;
         this.addPanelEvents();
         this.addNavEvents();
     }
@@ -120,9 +124,13 @@ function menuMobile(nav) {
 
 // On page load, find mobile nav and initialize
 document.addEventListener("DOMContentLoaded", function() {
-    let navMobile = document.querySelectorAll("[data-nav-mobile-panel]")[0];
-    if (navMobile != null) {
-        let mm = new menuMobile(navMobile);
-        mm.init();
-    }
+    let mm = new menuMobile();
+    let nav = new navBuilder(mm.init);
+    nav.init();
+    // if (navMobile != null) {
+    //     let navData = new navBuilder();
+    //     console.log(navData.init);
+    //     navData.init();
+    //     // console.log(navData);
+    // }
 }); 
