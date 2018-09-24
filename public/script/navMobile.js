@@ -1,18 +1,17 @@
 "use strict";
 
 function menuMobile(nav) {
-    this.navData = null;
-
     this.closedClass = "closed";
     this.openClass = "open";
     this.navIsOpen = false;
 
+    // DOM elements
     this.bodyDOM = document.querySelectorAll("[data-nav-mobile-status]")[0];
     this.navToggleDOM = document.querySelectorAll("[data-nav-mobile-toggle]")[0];
     this.navDOM = document.querySelectorAll("[data-nav-mobile]")[0];
     this.navMobileMainDOM = document.querySelectorAll("[data-nav-mobile-main]")[0];
 
-    // Request navigation from API
+    // Request navigation data from API
     this.requestNav = function(successFunc) {
         var _this = this;
 

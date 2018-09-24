@@ -354,8 +354,6 @@ body {
       color: #000; }
       .nav--desktop ul ul a:hover, .nav--desktop ul ul a:focus {
         background-color: #eee; }
-  .nav--desktop ul li:hover ul {
-    display: block; }
 
 /*
 ** Hero Component
