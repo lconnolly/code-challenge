@@ -55,6 +55,8 @@ function navBuilder(buildMobile, buildDesktop) {
 }
 
 function menuMobile(markup) {
+    let _this = this;
+
     this.navIsOpen = false;
     this.closedClass = "closed";
     this.openClass = "open";
@@ -64,25 +66,6 @@ function menuMobile(markup) {
     this.navToggleDOM = document.querySelectorAll("[data-nav-mobile-toggle]")[0];
     this.navDOM = document.querySelectorAll("[data-nav-mobile]")[0];
     this.navMobileMainDOM = document.querySelectorAll("[data-nav-mobile-main]")[0];
-
-    // console.log(this.navDOM);
-
-    // Navigation events (accordion)
-    this.addNavEvents = function() {
-        this.navDOM.addEventListener("click", function(e) {
-
-            // #TODO: close other open items when clicking a new parent
-            if (e.target.hasAttribute("data-nav-item-parent")) {
-                e.preventDefault();
-                if (e.target.parentNode.classList.contains("is-active")) {
-                    e.target.parentNode.classList.remove("is-active");
-                } else {
-                    e.target.parentNode.classList.add("is-active");
-                }
-                e.target.blur();
-            }
-        });
-    }
 
     // Panel Events
     this.openMenu = function() {
@@ -99,6 +82,13 @@ function menuMobile(markup) {
         this.navIsOpen ? this.closeMenu() : this.openMenu();
     }
 
+    this.collapseAll = function() {
+        let expandedItems = _this.navDOM.querySelectorAll(".is-active");
+        Array.prototype.forEach.call(expandedItems, function(item) {
+            item.classList.remove("is-active");
+        });
+    }
+
     this.addPanelEvents = function() {
         let _this = this;
 
@@ -113,6 +103,23 @@ function menuMobile(markup) {
             if(_this.navIsOpen) {
                 e.preventDefault();
                 _this.closeMenu();
+            }
+        });
+    }
+
+    // Navigation events (accordion)
+    this.addNavEvents = function() {
+        this.navDOM.addEventListener("click", function(e) {
+
+            if (e.target.hasAttribute("data-nav-item-parent")) {
+                e.preventDefault();
+                if (e.target.parentNode.classList.contains("is-active")) {
+                    e.target.parentNode.classList.remove("is-active");
+                } else {
+                    _this.collapseAll();
+                    e.target.parentNode.classList.add("is-active");
+                }
+                e.target.blur();
             }
         });
     }
@@ -151,28 +158,41 @@ function menuDesktop(markup) {
         this.navIsOpen ? this.closeMenu() : this.openMenu();
     }
 
+    this.clearActive = function() {
+        let activeItems = _this.navDOM.querySelectorAll(".is-active");
+        Array.prototype.forEach.call(activeItems, function(item) {
+            item.classList.remove("is-active");
+        });
+    }
+
     // Navigation events (dropdowns)
     this.addNavEvents = function() {
+
+        // Dropdown click events
         this.navDOM.addEventListener("click", function(e) {
-            // #TODO: close other open items when clicking a new parent
             if (e.target.hasAttribute("data-nav-item-parent")) {
                 e.preventDefault();
                 
                 if (e.target.parentNode.classList.contains("is-active")) {
-                    let activeItems = document.querySelectorAll(".is-active");
-                    Array.prototype.forEach.call(activeItems, function(item) {
-                        item.classList.remove("is-active");
-                    });
+                    _this.clearActive();
                     _this.closeMenu();
                 } else {
-                    let activeItems = document.querySelectorAll(".is-active");
-                    Array.prototype.forEach.call(activeItems, function(item) {
-                        item.classList.remove("is-active");
-                    });
-                    e.target.parentNode.classList.add("is-active");
+                    _this.clearActive();
                     _this.openMenu();
+                    e.target.parentNode.classList.add("is-active");
                 }
-                e.target.blur();
+            } else {
+                _this.clearActive();
+                _this.closeMenu();
+            }
+            e.target.blur();
+        });
+
+        // Close desktop nav on outside click
+        this.bodyDOM.addEventListener("click", function(e) {
+            if (!_this.navDOM.contains(e.target)) {
+                _this.clearActive();
+                _this.closeMenu();
             }
         });
     }

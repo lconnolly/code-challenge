@@ -4,6 +4,7 @@
 
 .hero {
     position: relative;
+    margin-bottom: 50px;
 
     @include breakpoint(sm) {
         display: flex;

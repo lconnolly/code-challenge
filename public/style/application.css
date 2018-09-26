@@ -254,7 +254,7 @@ body {
 
 .col--primary {
   max-width: 1016px;
-  margin: 0 auto 72px auto;
+  margin: 0 auto 50px auto;
   padding-left: 24px;
   padding-right: 24px; }
 
@@ -263,6 +263,10 @@ body {
 */
 .nav--mobile {
   transition: 300ms left ease-in-out;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   position: fixed;
   z-index: 10;
   left: -100%;
@@ -270,7 +274,7 @@ body {
   bottom: 0;
   width: calc(100% - 72px);
   overflow-x: hidden;
-  padding: 12px 0 48px 0;
+  padding: 0;
   background-color: #fff; }
   [data-nav-mobile-status="open"] .nav--mobile {
     left: 0; }
@@ -278,6 +282,7 @@ body {
     .nav--mobile {
       display: none; } }
   .nav--mobile ul {
+    padding: 12px 0 24px 0;
     font-weight: 400;
     font-size: 18px;
     line-height: 1.3333; }
@@ -293,6 +298,7 @@ body {
       .nav--mobile ul a:hover, .nav--mobile ul a:focus {
         background-color: #eee; }
     .nav--mobile ul ul {
+      padding: 0;
       font-weight: 300;
       font-size: 13px;
       line-height: 1.2308; }
@@ -319,10 +325,6 @@ body {
     .nav--mobile ul .nav-item-parent.is-active ul {
       max-height: 500px; }
   .nav--mobile .nav--mobile__copyright {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
     padding: 16px 16px 16px 24px;
     font-family: "Helvetica Neue", "Helvetica", sans-serif;
     font-size: 12px;
@@ -377,7 +379,8 @@ body {
 ** Hero Component
 */
 .hero {
-  position: relative; }
+  position: relative;
+  margin-bottom: 50px; }
   @media (min-width: 768px) {
     .hero {
       display: flex;
